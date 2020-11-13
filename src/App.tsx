@@ -9,11 +9,18 @@ function App() {
   );
 
   return (
-    <div style={{ width: "100vw", height: "100vh", display: "flex" }}>
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        overflow: "hidden",
+      }}
+    >
       <div style={{ flex: 1 }}>
         <Note content={markDown} changeContent={setMarkDown} />
       </div>
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, overflowY: "auto" }}>
         <Preview content={markDown} />
       </div>
     </div>
