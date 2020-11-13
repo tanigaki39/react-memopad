@@ -9,9 +9,13 @@ function App() {
   );
 
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <Note content={markDown} changeContent={setMarkDown} />
-      <Preview content={markDown} />
+    <div style={{ width: "100vw", height: "100vh", display: "flex" }}>
+      <div style={{ flex: 1 }}>
+        <Note content={markDown} changeContent={setMarkDown} />
+      </div>
+      <div style={{ flex: 1 }}>
+        <Preview content={markDown} />
+      </div>
     </div>
   );
 }
