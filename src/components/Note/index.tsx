@@ -2,18 +2,22 @@ import * as React from "react";
 import styles from "./index.module.css";
 //____________________________________________
 //
-const Component: React.FC = () => {
-  const [text, setText] = React.useState(localStorage.getItem("note"));
-
+const Component: React.FC<{
+  content: string;
+  changeContent: (content: string) => void;
+}> = ({ content, changeContent }) => {
   const handleChangeNote = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.target.value);
-    localStorage.setItem("note", e.target.value);
+    changeContent(e.target.value);
   };
+
+  React.useEffect(() => {
+    localStorage.setItem("note", content);
+  }, [content]);
 
   return (
     <textarea
       onChange={handleChangeNote}
-      defaultValue={text as string}
+      defaultValue={content}
       className={styles.root}
     ></textarea>
   );
