@@ -1,6 +1,8 @@
 import * as React from "react";
 import styles from "./index.module.css";
 import marked from "marked";
+import Prism from "prismjs";
+import "./prism.css";
 //____________________________________________
 //
 const Component: React.FC<{ content: string }> = ({ content }) => {
@@ -10,11 +12,14 @@ const Component: React.FC<{ content: string }> = ({ content }) => {
     setHtml(marked(content));
   }, [content]);
 
+  React.useEffect(() => {
+    Prism.highlightAll();
+  });
+
   return (
-    <div
-      className={styles.root}
-      dangerouslySetInnerHTML={{ __html: html }}
-    ></div>
+    <div className={styles.root}>
+      <div dangerouslySetInnerHTML={{ __html: html }}></div>
+    </div>
   );
 };
 //____________________________________________
