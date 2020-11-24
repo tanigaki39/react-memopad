@@ -1,5 +1,5 @@
 import React from "react";
-import Note from "./components/Note";
+import Editor from "./components/Editor";
 import Preview from "./components/Preview";
 //____________________________________________
 //
@@ -18,7 +18,7 @@ function App() {
       }}
     >
       <div style={{ flex: 1 }}>
-        <Note content={markDown} changeContent={setMarkDown} />
+        <Editor content={markDown} changeContent={setMarkDown} />
       </div>
       <div style={{ flex: 1, overflowY: "auto" }}>
         <Preview content={markDown} />
