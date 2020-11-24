@@ -10,10 +10,6 @@ const Component: React.FC<{
     changeContent(e.target.value);
   };
 
-  React.useEffect(() => {
-    localStorage.setItem("note", content);
-  }, [content]);
-
   return (
     <textarea
       onChange={handleChangeNote}

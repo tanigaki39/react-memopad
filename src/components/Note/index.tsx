@@ -5,18 +5,18 @@ import Preview from "../Preview";
 //
 type NoteProps = {
   data: {
-    id: number;
+    id: string;
     content: string;
   };
-  setMarkDown: () => void;
+  changeContent: (content: string) => void;
 };
 //____________________________________________
 //
-const Component: React.FC<NoteProps> = ({ data, setMarkDown }) => {
+const Component: React.FC<NoteProps> = ({ data, changeContent }) => {
   return (
     <div>
       <div style={{ flex: 1 }}>
-        <Editor content={data.content} changeContent={setMarkDown} />
+        <Editor content={data.content} changeContent={changeContent} />
       </div>
       <div style={{ flex: 1, overflowY: "auto" }}>
         <Preview content={data.content} />
