@@ -1,28 +1,30 @@
 import React from "react";
-import Editor from "./components/Editor";
-import Preview from "./components/Preview";
+import { v4 as uuid } from "uuid";
+//____________________________________________
+//
+type Note = {
+  id: string;
+  content: string;
+};
 //____________________________________________
 //
 function App() {
-  const [markDown, setMarkDown] = React.useState(
-    (localStorage.getItem("note") as string) || ""
+  const [notes, setNotes] = React.useState<Note[]>(
+    JSON.parse(localStorage.getItem("notes") as string) ||
+      localStorage.setItem("notes", JSON.stringify([]))
   );
 
+  const handleClickNewNote = () => {
+    setNotes((prev) => [...prev, { id: uuid(), content: "" }]);
+  };
+
+  React.useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        overflow: "hidden",
-      }}
-    >
-      <div style={{ flex: 1 }}>
-        <Editor content={markDown} changeContent={setMarkDown} />
-      </div>
-      <div style={{ flex: 1, overflowY: "auto" }}>
-        <Preview content={markDown} />
-      </div>
+    <div>
+      <button onClick={handleClickNewNote}>New Note</button>
     </div>
   );
 }
