@@ -1,6 +1,7 @@
 import React from "react";
 import { v4 as uuid } from "uuid";
 import Note from "./components/Note";
+import NoteList from "./components/NoteList";
 //____________________________________________
 //
 type NoteData = {
@@ -40,10 +41,18 @@ function App() {
 
   return (
     <div>
-      <button onClick={handleClickNewNote}>New Note</button>
-      {currentNote && (
-        <Note data={currentNote} changeContent={handleChangeContent} />
-      )}
+      <div>
+        <NoteList
+          onClick={(id) => setCurrentNote(notes.find((item) => item.id === id))}
+          data={notes}
+        />
+      </div>
+      <div>
+        <button onClick={handleClickNewNote}>New Note</button>
+        {currentNote && (
+          <Note data={currentNote} changeContent={handleChangeContent} />
+        )}
+      </div>
     </div>
   );
 }
