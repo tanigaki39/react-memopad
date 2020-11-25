@@ -1,0 +1,17 @@
+.root {
+  background: hsl(210, 15%, 20%);
+  height: 100%;
+}
+
+.item {
+  color: #fff;
+  cursor: pointer;
+  height: 70px;
+  padding: 1em;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.item:hover {
+  background: hsl(208, 11%, 26%);
+}

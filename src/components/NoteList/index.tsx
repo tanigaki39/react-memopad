@@ -1,4 +1,5 @@
 import * as React from "react";
+import styles from "./index.module.css";
 //____________________________________________
 //
 type NoteListProps = {
@@ -12,10 +13,14 @@ type NoteListProps = {
 //
 const Component: React.FC<NoteListProps> = ({ data, onClick }) => {
   return (
-    <div>
+    <div className={styles.root}>
       {data.map((item) => (
-        <div key={item.id} onClick={() => onClick(item.id)}>
-          <div>{item.content.substr(0, 30)}</div>
+        <div
+          className={styles.item}
+          key={item.id}
+          onClick={() => onClick(item.id)}
+        >
+          {item.content.substr(0, 30)}
         </div>
       ))}
     </div>

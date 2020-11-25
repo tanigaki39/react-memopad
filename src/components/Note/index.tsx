@@ -1,6 +1,7 @@
 import * as React from "react";
 import Editor from "../Editor";
 import Preview from "../Preview";
+import styles from "./index.module.css";
 //____________________________________________
 //
 type NoteProps = {
@@ -14,11 +15,11 @@ type NoteProps = {
 //
 const Component: React.FC<NoteProps> = ({ data, changeContent }) => {
   return (
-    <div>
-      <div style={{ flex: 1 }}>
+    <div className={styles.root}>
+      <div className={styles.editor}>
         <Editor content={data.content} changeContent={changeContent} />
       </div>
-      <div style={{ flex: 1, overflowY: "auto" }}>
+      <div className={styles.preview}>
         <Preview content={data.content} />
       </div>
     </div>

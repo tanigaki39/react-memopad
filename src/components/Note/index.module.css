@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  height: 100%;
+}
+
+.editor {
+  flex: 1;
+}
+
+.preview {
+  flex: 1;
+}

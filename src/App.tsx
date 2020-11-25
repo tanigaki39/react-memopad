@@ -40,15 +40,23 @@ function App() {
   }, [notes]);
 
   return (
-    <div>
-      <div>
+    <div style={{ display: "flex", minHeight: "100vh" }}>
+      <div style={{ width: 240 }}>
+        <div
+          style={{
+            background: "hsl(210, 15%, 20%)",
+            padding: "1em",
+            borderBottom: "1px solid #666",
+          }}
+        >
+          <button onClick={handleClickNewNote}>New Note</button>
+        </div>
         <NoteList
           onClick={(id) => setCurrentNote(notes.find((item) => item.id === id))}
           data={notes}
         />
       </div>
-      <div>
-        <button onClick={handleClickNewNote}>New Note</button>
+      <div style={{ flex: 1 }}>
         {currentNote && (
           <Note data={currentNote} changeContent={handleChangeContent} />
         )}
