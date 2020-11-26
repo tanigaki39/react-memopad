@@ -24,6 +24,14 @@ const Component: React.FC = () => {
     setCurrentNote(newNote);
   };
 
+  const handleClickDeleteNote = () => {
+    setNotes(notes.filter((note) => note.id !== currentNote.id));
+    setCurrentNote({
+      id: "",
+      content: "",
+    });
+  };
+
   React.useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
@@ -40,6 +48,7 @@ const Component: React.FC = () => {
       <div className={styles.aside}>
         <div className={styles.asideHeader}>
           <button onClick={handleClickNewNote}>新しいノート</button>
+          <button onClick={handleClickDeleteNote}>選択中のノートを削除</button>
         </div>
         <NoteList data={notes} />
       </div>
