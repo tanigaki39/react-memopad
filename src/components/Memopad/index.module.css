@@ -1,0 +1,18 @@
+.root {
+  display: flex;
+  min-height: 100vh;
+}
+
+.aside {
+  width: 240px;
+}
+
+.asideHeader {
+  background: hsl(210, 15%, 20%);
+  padding: 1em;
+  border-bottom: 1px solid #666;
+}
+
+.main {
+  flex: 1;
+}

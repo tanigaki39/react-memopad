@@ -4,23 +4,14 @@ import Preview from "../Preview";
 import styles from "./index.module.css";
 //____________________________________________
 //
-type NoteProps = {
-  data: {
-    id: string;
-    content: string;
-  };
-  changeContent: (content: string) => void;
-};
-//____________________________________________
-//
-const Component: React.FC<NoteProps> = ({ data, changeContent }) => {
+const Component: React.FC = () => {
   return (
     <div className={styles.root}>
       <div className={styles.editor}>
-        <Editor content={data.content} changeContent={changeContent} />
+        <Editor />
       </div>
       <div className={styles.preview}>
-        <Preview content={data.content} />
+        <Preview />
       </div>
     </div>
   );

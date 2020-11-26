@@ -12,6 +12,16 @@
   overflow-wrap: break-word;
 }
 
+.currentItem {
+  color: #fff;
+  cursor: pointer;
+  height: 70px;
+  padding: 1em;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  background: hsl(208, 11%, 26%);
+}
+
 .item:hover {
   background: hsl(208, 11%, 26%);
 }

@@ -1,19 +1,25 @@
 import * as React from "react";
+import { useCurrentNote } from "../../context/CurrentNoteContext";
 import styles from "./index.module.css";
 //____________________________________________
 //
-const Component: React.FC<{
-  content: string;
-  changeContent: (content: string) => void;
-}> = ({ content, changeContent }) => {
+const Component: React.FC = () => {
+  const { currentNote, setCurrentNote } = useCurrentNote();
+  const [editValue, setEditValue] = React.useState("");
+
   const handleChangeNote = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    changeContent(e.target.value);
+    setEditValue(e.target.value);
+    setCurrentNote({ ...currentNote, content: e.target.value });
   };
+
+  React.useEffect(() => {
+    setEditValue(currentNote.content);
+  }, [currentNote]);
 
   return (
     <textarea
       onChange={handleChangeNote}
-      defaultValue={content}
+      value={editValue}
       className={styles.root}
     ></textarea>
   );

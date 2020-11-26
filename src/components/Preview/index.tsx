@@ -3,9 +3,13 @@ import styles from "./index.module.css";
 import marked from "marked";
 import Prism from "prismjs";
 import "./prism.css";
+import { useCurrentNote } from "../../context/CurrentNoteContext";
 //____________________________________________
 //
-const Component: React.FC<{ content: string }> = ({ content }) => {
+const Component: React.FC = () => {
+  const {
+    currentNote: { content },
+  } = useCurrentNote();
   const [html, setHtml] = React.useState(marked(content));
 
   React.useEffect(() => {
